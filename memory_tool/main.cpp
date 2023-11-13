@@ -11,10 +11,10 @@ HANDLE hHandle = NULL;
 
 
 // 需要根据64/32位 进程和编译器的不同而修改， 测试读取的是32位进程，编译器为32位
-uint64_t ReadMem(uint64_t addr, bool isBaseOffset) {
-	uint32_t newAddr = addr;
+uint64_t ReadMem(uint64_t addr, bool isFirst) {
+	uint32_t newAddr = (uint32_t)addr;
 	uint32_t result = 0;
-	if (isBaseOffset) {
+	if (isFirst) {
 		// 加上模块基址
 		newAddr += 0x787E0000;
 	}

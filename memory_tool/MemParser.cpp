@@ -9,7 +9,7 @@ namespace evlib
 	:tokens(tokens)
 	,position(0)  
 	, m_callback(callback)
-    , m_bIsBaseOffset(true)
+    , m_bIsFirst(true)
 	{
 		
 	}
@@ -46,8 +46,8 @@ namespace evlib
 			if (tokens[position].type == TokenType::CloseBracket) {
 				position++;
 				if (m_callback) {
-					result = m_callback(result, m_bIsBaseOffset);
-					m_bIsBaseOffset = false;
+					result = m_callback(result, m_bIsFirst);
+					m_bIsFirst = false;
 				}
 				return result;
 			}

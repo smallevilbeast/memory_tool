@@ -6,7 +6,7 @@
 
 namespace evlib {
 
-	using MemParseCallback = std::function<uint64_t(uint64_t addr, bool isBaseOffset)>;
+	using MemParseCallback = std::function<uint64_t(uint64_t addr, bool isFirst)>;
 	class MemParser {
 	public:
 		MemParser(const std::vector<Token>& tokens, const MemParseCallback& callback);
@@ -21,6 +21,6 @@ namespace evlib {
 		size_t position;
 		MemParseCallback m_callback;
 
-		bool m_bIsBaseOffset;
+		bool m_bIsFirst;
 	};
 }
